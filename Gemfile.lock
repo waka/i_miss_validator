@@ -1,0 +1,45 @@
+PATH
+  remote: .
+  specs:
+    i_miss_validator (0.1.0)
+      activerecord (~> 4.2.10)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activemodel (4.2.10)
+      activesupport (= 4.2.10)
+      builder (~> 3.1)
+    activerecord (4.2.10)
+      activemodel (= 4.2.10)
+      activesupport (= 4.2.10)
+      arel (~> 6.0)
+    activesupport (4.2.10)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
+    arel (6.0.4)
+    builder (3.2.3)
+    concurrent-ruby (1.0.5)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
+    minitest (5.11.3)
+    mysql2 (0.3.21)
+    rake (10.5.0)
+    thread_safe (0.3.6)
+    tzinfo (1.2.5)
+      thread_safe (~> 0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.16)
+  i_miss_validator!
+  minitest (~> 5.0)
+  mysql2 (>= 0.3, < 0.4)
+  rake (~> 10.0)
+
+BUNDLED WITH
+   1.16.1

@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+begin
+  require File.join(Dir.pwd, 'config', 'boot')
+  require File.join(Dir.pwd, 'config', 'environment')
+rescue LoadError
+  raise 'Must be in the root dir on rails app'
+end
+
+require 'bundler/setup'
+require 'i_miss_validator'
+
+IMissValidator.run
