@@ -30,7 +30,7 @@ class IMissValidator::Inspector::PresenceInspector
       {
         column: column.name,
         missing_validator: :presence_validator,
-        options: {}
+        message: 'presence: true'
       }
     end
   end

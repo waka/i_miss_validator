@@ -8,7 +8,9 @@ class IMissValidator::Inspector::NumericalityInspector
 
   def self.columns(model)
     model.columns.select do |column|
-      column.type == :integer && IGNORE_COLUMN_NAMES.include?(column.name) == false
+      column.type == :integer &&
+        IGNORE_COLUMN_NAMES.include?(column.name) == false &&
+        (column.name =~ /.*id$/) == nil
     end
   end
 
@@ -31,7 +33,7 @@ class IMissValidator::Inspector::NumericalityInspector
       {
         column: column.name,
         missing_validator: :numericality_validator,
-        options: { min: range.first, max: range.last }
+        message: "numericality: { only_integer: true, less_than_or_equal_to: #{range.first}, greater_then_or_equal_to: #{range.last} }"
       }
     end
   end

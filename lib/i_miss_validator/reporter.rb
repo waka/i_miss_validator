@@ -1,30 +1,40 @@
 class IMissValidator::Reporter
-  def self.report(result = [])
-    result.each do |hash|
-      puts "Model: #{hash[:model]}"
-      hash[:problems].each do |column, problem|
-        puts "  column: #{column}"
-        problem.each do |pb|
-          puts "    missing: #{print_missing(pb)}"
+  module Colorize
+    refine String do
+      def red
+        "\e[36m#{self}\e[0m"
+      end
+
+      def yellow
+        "\e[33m#{self}\e[0m"
+      end
+
+      def pink
+        "\e[35m#{self}\e[0m"
+      end
+    end
+  end
+
+  using Colorize
+
+  def self.report(results = [])
+    results.each do |result|
+      next if result[:problems].keys.size == 0
+
+      print_with_indent(1, "Model".red + ": #{result[:model]}")
+
+      result[:problems].each do |column, problems|
+        print_with_indent(2, "Column".pink + ": #{column}")
+
+        problems.each do |problem|
+          print_with_indent(3, "Missing".yellow + ": #{problem[:message]}")
         end
       end
     end
   end
 
-  def self.print_missing(problem)
-    options = problem[:options]
-
-    case problem[:missing_validator]
-    when :acceptance_validator
-      "acceptance: true or acceptance: { accept: 'true', 'false' }"
-    when :length_validator
-      "length: { maximum: #{options[:limit]} }"
-    when :numericality_validator
-      "numericality: { only_integer: true, less_than_or_equal_to: #{options[:min]}, greater_then_or_equal_to: #{options[:max]} }"
-    when :presence_validator
-      'presence: true'
-    else
-      'something wrong!!!'
-    end
+  def self.print_with_indent(level, str = "")
+    level = 1 if 1 > level
+    puts "  " * (level - 1) + str
   end
 end

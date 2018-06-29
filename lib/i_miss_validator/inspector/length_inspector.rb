@@ -28,7 +28,7 @@ class IMissValidator::Inspector::LengthInspector
       {
         column: column.name,
         missing_validator: :length_validator,
-        options: { limit: column.limit }
+        message: "length: { maximum: #{column.limit} }"
       }
     end
   end

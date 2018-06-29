@@ -21,6 +21,7 @@ Or install it yourself as:
 ## Usage
 
 ```
+$ cd RAILS_APP_ROOT_DIR
 $ bundle exec i_miss_validator
 ```
 

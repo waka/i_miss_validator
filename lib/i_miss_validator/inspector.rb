@@ -1,12 +1,12 @@
 require 'active_record'
 
 class IMissValidator::Inspector
-  attr_reader :result
+  attr_reader :results
 
   def initialize(models_path, inspectors = [])
     @models_path = models_path
     @inspectors = inspectors
-    @result = []
+    @results = []
   end
 
   def models
@@ -34,7 +34,7 @@ class IMissValidator::Inspector
         inspector.inspect(model)
       end
 
-      @result << {
+      @results << {
         model: model.to_s,
         problems: problems.flatten.compact.group_by {|pb| pb[:column] }
       }

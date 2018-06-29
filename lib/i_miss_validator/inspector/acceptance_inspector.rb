@@ -28,7 +28,7 @@ class IMissValidator::Inspector::AcceptanceInspector
       {
         column: column.name,
         missing_validator: :acceptance_validator,
-        options: {}
+        message: "acceptance: true or acceptance: { accept: 'true', 'false' }"
       }
     end
   end
