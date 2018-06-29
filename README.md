@@ -1,6 +1,20 @@
 # IMissValidator
 
-The validation of models checker for rails app.
+This library discover validation that is not defined in the model.
+It will suggest you undefined validations like this.
+
+```
+Model: User
+  Column: name
+    Missing: presence: true
+    Missing: length: { maximum: 255 }
+  Column: age
+    Missing: numericality: { only_integer: true, less_than_or_equal_to: -2147483648, greater_then_or_equal_to: 2147483648 }
+  Column: authorized
+    Missing: acceptance: true or acceptance: { accept: 'true', 'false' }
+  Column: bank_id
+    Missing: presence: true
+```
 
 ## Installation
 
