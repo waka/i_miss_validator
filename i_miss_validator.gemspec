@@ -34,5 +34,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "mysql2", ">= 0.3", "< 0.4"
 
-  spec.add_dependency "activerecord", ">= 4.2.10", "< 5.2.0"
+  spec.add_dependency "activerecord", ">= 4.2"
 end
